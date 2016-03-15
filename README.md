@@ -16,4 +16,18 @@ The following instructions outline a procedure for installing the traffic monito
     'C:\\Users\\<USERNAME>\\AppData\\Local\\Continuum\\Anaconda\\lib\\site-packages\\numpy\\__init__.pyc'
     ```
 
-Verify that this copying has worked by opening a command prompt, starting a Python interpreter, and verifying that `import cv2` does not throw an error.
+    Verify that this copying has worked by opening a command prompt, starting a Python interpreter, and verifying that `import cv2` does not throw an error.
+
+    Next, we must set some environment variables. One of these involved connecting FFmpeg to the Python OpenCV bindings. Navigate to `C:\opencv\sources\3rdparty\ffmpeg`. Rename `opencv_ffmpeg.dll` to `opencv_ffmpeg2412.dll` and `open, cv_ffmpeg_64.dll` to `opencv_ffmpeg2412_64.dll`, where 2412 refers to the version of OpenCV in use (2.4.12). Append `C:\opencv\sources\3rdparty\ffmpeg` to the `PATH` environment variable. Additionally, create a new environment variable named `OPENCV_DIR` and set it to `C:\opencv\build\x64\vc12`. Next append the `bin` directory of the `OPENCV_DIR` to the `PATH` environment variable. Do this by appending `%OPENCV_DIR$\bin` to `PATH`.
+
+    > When editing environment variables, be sure to edit your username's environment variables and not system environment variables. The system environment variable `Path` is *not* the same as the user environment variable `PATH`. 
+
+    To verify that this has worked, open a new command prompt, navigate to a directory with a video file, start a Python interpreter, and run the following--
+
+    ```
+    >>> import cv2
+    >>> cap = cv2.VideoCapture(<VIDEO_FILENAME>)
+    >>> cap.grab()
+    True
+    ```
+    If `cap.grab()` returns True, Python is able to read videos via OpenCV and FFmpeg. If it returns False, reread step four and verify that the files are renamed as specified and the environment variables are set appropriately.
