@@ -29,6 +29,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="main.py" />
+    <Compile Include="opencv.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="setup.py">
       <SubType>Code</SubType>
     </Compile>

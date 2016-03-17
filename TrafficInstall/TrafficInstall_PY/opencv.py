@@ -9,7 +9,7 @@ from distutils.spawn import find_executable
 import os
 from shutil import copytree, rmtree, copy2
 
-from environment import append_to_PATH
+from environment import append_to_PATH, set_usr_variable
 
 def check():
     """
@@ -83,7 +83,7 @@ def install(downloaded_file, install_dir=None):
                 not presently exist. It will be created by shutil.copytree().
 
         Returns:
-            None
+            str: Path to where OpenCV has been installed.
     """
     print("## Install OpenCV ##")
     print("Extracting OpenCV...")
@@ -98,6 +98,7 @@ def install(downloaded_file, install_dir=None):
     opencv_temp = os.path.join(temp_dir, "opencv\\")
     copytree(opencv_temp, installation_directory)  # Move extracted files
     rmtree(opencv_temp)  # Delete temporary directory of extracted files
+    return installation_directory
     
 
 def connect_3rdparty(opencv_dir, anaconda_dir, opencv_version):
@@ -121,6 +122,7 @@ def connect_3rdparty(opencv_dir, anaconda_dir, opencv_version):
     cv2_loc = os.path.join(opencv_dir, "build", "python", "2.7", "x64", "cv2.pyd")
     site_packages_dest = os.path.join(anaconda_dir, "lib", "site-packages", "cv2.pyd")
     copy2(cv2_dir, site_packages_dest)  # Copy cv2.pyd to site-packages
+     
 
     ## Rename FFmpeg
     print("Connecting FFmpeg...")
@@ -129,7 +131,13 @@ def connect_3rdparty(opencv_dir, anaconda_dir, opencv_version):
     os.rename(ffmpeg_dir + "opencv_ffmpeg.dll", ffmpeg_dir + "opencv_ffmpeg{}.dll".format(ver_str))
     os.rename(ffmpeg_dir + "opencv_ffmpeg_64.dll", ffmpeg_dir + "opencv_ffmpeg{}_64.dll".format(ver_str))
     print("Adding FFmpeg to PATH...")
-    old_PATH, new_PATH = append_to_PATH([ffmpeg_dir])
+    old_PATH0, new_PATH0 = append_to_PATH([ffmpeg_dir])
+
+    # Configure OpenCV bin
+    cv_env_name = "OPENCV_DIR"
+    opencv_build_dir = os.path.join(opencv_dir, "build", "x64", "vc12")
+    set_usr_variable(cv_env_name, opencv_build_dir)
+    old_PATH1, new_PATH1 = append_to_PATH(["%{}%\\bin".format(cv_env_name)])
 
 DEFAULT_INSTALL_LOCATION = "C:\\opencv"
 

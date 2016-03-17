@@ -102,7 +102,7 @@ def install(downloaded_file, install_dir=None):
                 "C:\Users\<USERNAME>" is dynamically read using utilities.user_home_directory()
 
         Returns:
-            None
+            str: Path to where Anaconda has been installed.
     """
     print("## Install Anaconda Scientific Python Distribution ##")
     install_type = "JustMe"  # "JustMe" or "AllUsers"
@@ -119,6 +119,7 @@ def install(downloaded_file, install_dir=None):
                             install_dir=installation_directory
     )
     call([downloaded_file])
+    return installation_directory
 
 DEFAULT_INSTALL_LOCATION = user_home_directory() + "AppData\\Local\\Continuum\\Anaconda"
 
