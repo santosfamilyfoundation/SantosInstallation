@@ -33,7 +33,8 @@ def download(version, destination, bit64=True):
         Args:
             version (str): String specifying the Anaconda version to download.
                 (e.g., "2.5.0")
-            destination (str): Path to store downloaded file. 
+            destination (str): Path to store downloaded file. Will be saved to
+                <destination> + "anaconda.exe" 
             bit64 [Optional(bool)]: True if 64-bit installer should be downloaded. Else
                 the 32-bit (x86) version will be downloaded. Defaults to True.
 
@@ -45,7 +46,7 @@ def download(version, destination, bit64=True):
         "Linux": "sh",
         "MacOSX": "pkg"
     }
-
+    print("## Download Anaconda Scientific Python Distribution ##")
     # Check for trailing slash on destination directory specifier
     if destination[-1] is not "\\":
         destination = destination + "\\"
@@ -88,7 +89,7 @@ def download(version, destination, bit64=True):
                     break
                 pbar.update(CHUNK)
                 f.write(chunk)
-    return donwload_location
+    return download_location
 
 def install(downloaded_file, install_dir=None):
     """
@@ -103,6 +104,7 @@ def install(downloaded_file, install_dir=None):
         Returns:
             None
     """
+    print("## Install Anaconda Scientific Python Distribution ##")
     install_type = "JustMe"  # "JustMe" or "AllUsers"
     add_to_path = 1  # 1 (yes, add to path) or 0 (do not add to path)
     register_python = 1 # 1 (Set as systemwide default Python) or 0 (set only as user default Python).
