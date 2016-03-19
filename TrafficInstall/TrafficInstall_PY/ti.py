@@ -92,21 +92,17 @@ def install(downloaded_file, install_dir=None):
         Returns:
             str: Path to where the binaries and the repo have been installed.
     """
-    print("## Install Anaconda Scientific Python Distribution ##")
-    install_type = "JustMe"  # "JustMe" or "AllUsers"
-    add_to_path = 1  # 1 (yes, add to path) or 0 (do not add to path)
-    register_python = 1 # 1 (Set as systemwide default Python) or 0 (set only as user default Python).
+    print("## Install TrafficIntelligence Repository ##")
+    
     if install_dir:
         installation_directory = install_dir
     else:
         installation_directory = DEFAULT_INSTALL_LOCATION
-    install_options = "/InstallationType={it} /AddToPath={atp} /RegisterPython={rp} /S /D={install_dir}".format(
-                            it=install_type,
-                            atp=add_to_path,
-                            rp=register_python,
-                            install_dir=installation_directory
-    )
-    call([downloaded_file])
+    
+    print("## Install TrafficIntelligence Repository ##")
+    # TODO: Unzip file
+
+
     return installation_directory
 
 DEFAULT_INSTALL_LOCATION = user_home_directory() + "AppData\\Local\\Continuum\\Anaconda"
