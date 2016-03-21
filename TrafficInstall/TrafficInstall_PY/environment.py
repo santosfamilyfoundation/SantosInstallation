@@ -68,6 +68,45 @@ def set_usr_variable(var_name, value, value_type=reg.REG_SZ):
     win32gui.SendMessage(win32con.HWND_BROADCAST, win32con.WM_SETTINGCHANGE, 0, 'Environment')
     return (prev_val, value)
 
+
+def append_usr_variable(var_name, value, value_type=reg.REG_SZ):
+    """
+    Sets a user environment variable to a specified value. Creates a new variable if the
+    specified variable does not currently exist. If this variable already exists, this
+    appends the new, given value to the existing value of this variable (semicolon delimited).
+
+        Args:
+            var_name (str): Name of targeted user environment variable.
+            value (str): Value which will be associated with\appended to the targeted
+                user environment variable.
+            value_type [Optional (_winreg REG_* constant)]: Describes the 
+                type of the value to the Windows registry. Defaults to _winreg.REG_SZ.
+
+        Returns:
+            tuple: Tuple of 2 strings. The first is the previous value of <var_name>.
+                The second is the new, updated value of <var_name>. If <var_name> did not
+                previously exist, the first element of the tuple will be None.
+    """
+    env_key = reg.OpenKey(reg.HKEY_CURRENT_USER, "Environment")
+    try:
+        val_prev, val_type = reg.QueryValueEx(env_key, var_name)
+    except WindowsError:
+        # The PATH user environment variable was previously undefined
+        val_prev = ''
+
+    val = val_prev.split(';')  # Assumes PATH contains no folder names with semicolons.
+    if len(val[-1]) == 0:
+        # Check for trailing semicolon & remove it if it exists
+        new_val = val[:-1]
+    new_val.append(value)
+    val_write = ";".join(new_val)
+
+    reg.SetValueEx(env_key, var_name, 0, value_type, val_write)
+    reg.CloseKey(env_key)
+    # Send message to Windows notifying of environment change
+    win32gui.SendMessage(win32con.HWND_BROADCAST, win32con.WM_SETTINGCHANGE, 0, 'Environment')
+    return (val_prev if val_prev else None, val_write)
+
 def check_usr_var_exists(var_name):
     """
     Checks to see whether a specified environment variable exists in the current user's space.

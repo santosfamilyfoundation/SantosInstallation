@@ -85,3 +85,18 @@ def make_hidden(path):
         None
     """
     win32api.SetFileAttributes(path, win32con.FILE_ATTRIBUTE_HIDDEN)
+
+def cleanup(temp_dir):
+    """
+    Cleans up after an installation.
+    
+        Args:
+            temp_dir (str): Path to temporary directory used to store downloaded
+                files during the installation process. This will be deleted.
+        
+        Returns:    
+            None
+    """
+    print("## Clean Up ##")
+    print("Removing temporary files...")
+    os.rmdir(temp_dir)

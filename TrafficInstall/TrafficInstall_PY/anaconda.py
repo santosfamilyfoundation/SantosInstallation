@@ -85,7 +85,7 @@ def download(version, destination, bit64=True):
             while True:
                 chunk = response.read(CHUNK)
                 if not chunk:
-                    print("Download Complete.")
+                    print("\nDownload Complete.")
                     break
                 pbar.update(CHUNK)
                 f.write(chunk)
