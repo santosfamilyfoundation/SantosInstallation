@@ -41,7 +41,7 @@ def main():
         ti.install_python_deps(temp_dir)
         executable_path = ti.copy_executable(ti_dir)
 
-    ## Delete temporary files. 
+    ## Delete temporary files.  
     ut.cleanup(temp_dir)
     
     # TODO: Tests?

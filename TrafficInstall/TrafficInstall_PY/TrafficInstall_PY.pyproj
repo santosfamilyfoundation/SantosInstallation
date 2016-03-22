@@ -12,6 +12,9 @@
     <OutputPath>.</OutputPath>
     <Name>TrafficInstall_PY</Name>
     <RootNamespace>TrafficInstall_PY</RootNamespace>
+    <IsWindowsApplication>False</IsWindowsApplication>
+    <InterpreterId>{769e5334-410a-4681-8839-3254e1e3a185}</InterpreterId>
+    <InterpreterVersion>2.7</InterpreterVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,12 +38,15 @@
     <Compile Include="opencv.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="setup.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="utilities.py">
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="requirements.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="{769e5334-410a-4681-8839-3254e1e3a185}\2.7" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
