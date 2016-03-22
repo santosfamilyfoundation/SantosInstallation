@@ -8,3 +8,7 @@ To create an icon file to use with PyInstaller, one may use the following method
 4. Press the "Convert" button. An `.ico` will download. 
 5. Place the downloaded `.ico` into the `icon` directory of the `TrafficInstal_PY` project.
 6. Check ../build_installer.py to ensure PyInstaller is directed to use the correct icon file.
+
+
+# Sources
+* `belt.ico`: http://iconbug.com/detail/icon/7014/car-seatbelt/
