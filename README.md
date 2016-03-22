@@ -1,6 +1,13 @@
 # TrafficInstallation
 Installing traffic monitoring code on various platforms.
 
+## Executable
+The latest copy of the Windows installer may be downloaded [here](https://github.com/santosfamilyfoundation/TrafficInstallation/raw/windows/TrafficInstall/TrafficInstall_PY/dist/TrafficInstaller.exe). 
+This will download and install the Anaconda Scientific Python Distribution, OpenCV, and traffic video analysis libraries. It will configure these accordingly. Please consider making a [system restore point](http://windows.microsoft.com/en-us/windows7/create-a-restore-point)
+before installing.
+
+This installer should work on Windows 7, Windows 8, and Windows 10. To install, run the downloaded [TrafficInstaller.exe](https://github.com/santosfamilyfoundation/TrafficInstallation/raw/windows/TrafficInstall/TrafficInstall_PY/dist/TrafficInstaller.exe).
+
 ## Windows
 The following instructions outline a procedure for installing the traffic monitoring code on computers running Microsoft Windows. This has been tested on a computer running Microsoft Windows 7, 64-bit. 
 

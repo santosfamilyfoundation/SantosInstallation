@@ -51,6 +51,7 @@
     <Content Include="icon\readme.md" />
     <Content Include="install_default.cfg" />
     <Content Include="main.spec" />
+    <Content Include="readme.md" />
     <Content Include="requirements.txt" />
     <Content Include="version.txt" />
   </ItemGroup>
