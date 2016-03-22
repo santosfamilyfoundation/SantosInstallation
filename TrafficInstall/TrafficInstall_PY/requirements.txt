@@ -1,0 +1,9 @@
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: win-64
+msvc_runtime=1.0.1=vc9_0
+pip=8.1.1=py27_0
+python=2.7.11=2
+pywin32=220=py27_1
+setuptools=20.3=py27_0
+wheel=0.29.0=py27_0
