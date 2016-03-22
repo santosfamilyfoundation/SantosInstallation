@@ -13,7 +13,7 @@
     <Name>TrafficInstall_PY</Name>
     <RootNamespace>TrafficInstall_PY</RootNamespace>
     <IsWindowsApplication>False</IsWindowsApplication>
-    <InterpreterId>{769e5334-410a-4681-8839-3254e1e3a185}</InterpreterId>
+    <InterpreterId>{0afe2c8d-2e7c-491e-845f-cac4f892e904}</InterpreterId>
     <InterpreterVersion>2.7</InterpreterVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -28,10 +28,14 @@
     <Compile Include="anaconda.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="build_configure.py" />
     <Compile Include="environment.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="main.py" />
+    <Compile Include="build_installer.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ti.py">
       <SubType>Code</SubType>
     </Compile>
@@ -43,10 +47,19 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="icon\belt.ico" />
+    <Content Include="icon\readme.md" />
+    <Content Include="install_default.cfg" />
+    <Content Include="main.spec" />
     <Content Include="requirements.txt" />
+    <Content Include="version.txt" />
   </ItemGroup>
   <ItemGroup>
+    <InterpreterReference Include="{0afe2c8d-2e7c-491e-845f-cac4f892e904}\2.7" />
     <InterpreterReference Include="{769e5334-410a-4681-8839-3254e1e3a185}\2.7" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="icon\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
