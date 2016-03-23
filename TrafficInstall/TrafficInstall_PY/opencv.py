@@ -11,6 +11,7 @@ from shutil import copytree, rmtree, copy2
 
 from environment import append_to_PATH, set_usr_variable
 
+
 def check():
     """
     Checks for existing OpenCV installation.
@@ -21,7 +22,7 @@ def check():
         Returns:
             bool: True if found to be installed, else False
     """
-    
+
     install_dir_exists = os.path.exists(DEFAULT_INSTALL_LOCATION)
     anaconda_exists = find_executable("anaconda")
     conda_exists = find_executable("conda")
@@ -29,6 +30,7 @@ def check():
         return True
     else:
         return False
+
 
 def download(version, destination):
     """
@@ -71,6 +73,7 @@ def download(version, destination):
                 f.write(chunk)
     return download_location
 
+
 def install(downloaded_file, install_dir=None):
     """
     Unpacks a downloaded OpenCV self-extracting zip archive. It copies the folder to an installation 
@@ -92,14 +95,14 @@ def install(downloaded_file, install_dir=None):
     else:
         installation_directory = DEFAULT_INSTALL_LOCATION
     # Silently extract to an "opencv" folder next to the downloaded file
-    call([downloaded_file, "-y","-gm2"])
+    call([downloaded_file, "-y", "-gm2"])
     print("Moving OpenCV...")
     temp_dir = os.path.dirname(downloaded_file)
     opencv_temp = os.path.join(temp_dir, "opencv\\")
     copytree(opencv_temp, installation_directory)  # Move extracted files
     rmtree(opencv_temp)  # Delete temporary directory of extracted files
     return installation_directory
-    
+
 
 def connect_3rdparty(opencv_dir, anaconda_dir, opencv_version):
     """
@@ -122,7 +125,6 @@ def connect_3rdparty(opencv_dir, anaconda_dir, opencv_version):
     cv2_loc = os.path.join(opencv_dir, "build", "python", "2.7", "x64", "cv2.pyd")
     site_packages_dest = os.path.join(anaconda_dir, "lib", "site-packages", "cv2.pyd")
     copy2(cv2_dir, site_packages_dest)  # Copy cv2.pyd to site-packages
-     
 
     ## Rename FFmpeg
     print("Connecting FFmpeg...")
@@ -138,6 +140,7 @@ def connect_3rdparty(opencv_dir, anaconda_dir, opencv_version):
     opencv_build_dir = os.path.join(opencv_dir, "build", "x64", "vc12")
     set_usr_variable(cv_env_name, opencv_build_dir)
     old_PATH1, new_PATH1 = append_to_PATH(["%{}%\\bin".format(cv_env_name)])
+
 
 DEFAULT_INSTALL_LOCATION = "C:\\opencv"
 

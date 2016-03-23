@@ -23,7 +23,7 @@ def check():
             bool: True if found to be installed, else False
     """
     return os.path.exists(os.path.join(DEFAULT_INSTALL_LOCATION, "trafficintelligence"))
-    
+
 
 def download(destination):
     """
@@ -60,6 +60,7 @@ def download(destination):
                 f.write(chunk)
     return download_location
 
+
 def install(downloaded_file, install_dir=None):
     """
     Unzips and places the TrafficIntelligence repository and the Windows binaries.
@@ -94,6 +95,7 @@ def install(downloaded_file, install_dir=None):
     append_usr_variable("PYTHONPATH", python_dir)
     return installation_directory
 
+
 def install_python_deps(temp_dir):
     """
     Installs Python packages pillow and shapely. Pillow installation uses Anaconda's
@@ -112,7 +114,7 @@ def install_python_deps(temp_dir):
     # Install Python Imaging Library [pillow]
     print("Acquiring PILLOW (imaging library)...")
     call(["conda", "install", "pillow", "-y"])
-    
+
     # Download and install shapely.
     url = "http://www.lfd.uci.edu/~gohlke/pythonlibs/djcobkfp/Shapely-1.5.13-cp27-none-win_amd64.whl"
     print("Acquiring Shapely...")
@@ -145,10 +147,11 @@ def copy_executable(ti_dir):
             str: Path to the new copy of the executable.
     """
     exe_dir = os.path.join(ti_dir, "windows_built")
-    exe_path = os.path.join(exe_dir,"trafficintelligence.exe")
+    exe_path = os.path.join(exe_dir, "trafficintelligence.exe")
     exe_copy = os.path.join(exe_dir, "feature-based-tracking.exe")
     copy2(exe_path, exe_copy)
     return exe_copy
+
 
 DEFAULT_INSTALL_LOCATION = os.path.join(user_home_directory(), "Traffic")
 

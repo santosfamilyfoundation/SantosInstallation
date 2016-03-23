@@ -37,6 +37,7 @@ def append_to_PATH(dp_list):
     win32gui.SendMessage(win32con.HWND_BROADCAST, win32con.WM_SETTINGCHANGE, 0, 'Environment')
     return (PATH_prev, PATH_new)
 
+
 def set_usr_variable(var_name, value, value_type=reg.REG_SZ):
     """
     Sets a user environment variable to a specified value. Creates a new variable if the
@@ -107,6 +108,7 @@ def append_usr_variable(var_name, value, value_type=reg.REG_SZ):
     win32gui.SendMessage(win32con.HWND_BROADCAST, win32con.WM_SETTINGCHANGE, 0, 'Environment')
     return (val_prev if val_prev else None, val_write)
 
+
 def check_usr_var_exists(var_name):
     """
     Checks to see whether a specified environment variable exists in the current user's space.
@@ -130,6 +132,7 @@ def check_usr_var_exists(var_name):
     finally:
         reg.CloseKey(env_key)
     return ret
+
 
 def check_var_exists(var_name):
     """

@@ -38,13 +38,15 @@ def user_home_directory():
     """
     return environ["USERPROFILE"] + "\\"
 
+
 def identify_platform():
     true_platform = os.environ['PROCESSOR_ARCHITECTURE']  # Exists
     try:
-            true_platform = os.environ["PROCESSOR_ARCHITEW6432"]  # Only exists on WOW64
+        true_platform = os.environ["PROCESSOR_ARCHITEW6432"]  # Only exists on WOW64
     except KeyError:
-            pass
+        pass
     return true_platform
+
 
 def is_64bit():
     """
@@ -56,7 +58,8 @@ def is_64bit():
         Returns
             bool: True if 64-bit, else False.
     """
-    return sys.maxsize > 2**32
+    return sys.maxsize > 2 ** 32
+
 
 def make_temp_dir(install_dir):
     """
@@ -75,6 +78,7 @@ def make_temp_dir(install_dir):
     make_hidden(temp_dir)
     return temp_dir
 
+
 def make_hidden(path):
     """
     On Windows, makes the given file or directory hidden.
@@ -86,6 +90,7 @@ def make_hidden(path):
         None
     """
     win32api.SetFileAttributes(path, win32con.FILE_ATTRIBUTE_HIDDEN)
+
 
 def cleanup(temp_dir):
     """
