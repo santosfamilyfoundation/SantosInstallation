@@ -71,7 +71,8 @@ def make_temp_dir(install_dir):
         None
     """
     temp_dir = install_dir + ".install\\"
-    os.mkdir(temp_dir)
+    if not os.path.exists(temp_dir):
+        os.mkdir(temp_dir)
     make_hidden(temp_dir)
     return temp_dir
 
