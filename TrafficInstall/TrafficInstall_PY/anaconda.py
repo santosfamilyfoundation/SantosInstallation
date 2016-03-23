@@ -5,6 +5,7 @@ import urllib2
 from utilities import user_home_directory
 from tqdm import tqdm
 from subprocess import call
+import os
 from distutils.spawn import find_executable
 
 def check():
