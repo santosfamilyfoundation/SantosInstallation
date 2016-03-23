@@ -119,6 +119,7 @@ def install(downloaded_file, install_dir=None):
     #                        rp=register_python,
     #                        install_dir=installation_directory
     #)
+    print("Installing, please wait...")
     call(
             [downloaded_file,
             "/InstallationType={}".format(install_type),

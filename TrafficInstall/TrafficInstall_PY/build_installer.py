@@ -24,7 +24,8 @@ def build(args):
              "-F",          # Create a one-file bundled executable.
              "-n={}".format(installer_name),    # Name the installer as specified in config file.
              "--version-file={}".format(version_path),  # Use the version file specified in the config file.
-             "-i={}".format(icon_path)],                # Use the icon file specified in the config file.
+             "-i={}".format(icon_path),                # Use the icon file specified in the config file.
+             "--uac-admin"]                            # Request admin privileges
     )
     print("Build finished.")  
 
