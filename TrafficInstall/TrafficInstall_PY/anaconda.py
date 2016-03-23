@@ -123,7 +123,7 @@ def install(downloaded_file, install_dir=None):
             [downloaded_file,
             "/InstallationType={}".format(install_type),
             "/AddToPath={}".format(add_to_path),
-            "/RegisterPython={}".format(rp),
+            "/RegisterPython={}".format(register_python),
             "/S",
             "/D={}".format(installation_directory)
             ]
