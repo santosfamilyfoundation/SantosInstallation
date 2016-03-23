@@ -36,7 +36,7 @@ def user_home_directory():
     Returns:
         str: Home directory of the current Windows user
     """
-    return environ["HOMEDRIVE"] + environ["HOMEPATH"] + "\\"
+    return environ["USERPROFILE"] + "\\"
 
 def identify_platform():
     true_platform = os.environ['PROCESSOR_ARCHITECTURE']  # Exists
@@ -70,9 +70,8 @@ def make_temp_dir(install_dir):
     Returns:
         None
     """
-    temp_dir = install_dir + ".install\\"
-    if not os.path.exists(temp_dir):
-        os.mkdir(temp_dir)
+    temp_dir = os.path.join(install_dir, ".install")
+    ensure_dir_exists(temp_dir)
     make_hidden(temp_dir)
     return temp_dir
 
