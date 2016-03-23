@@ -113,13 +113,21 @@ def install(downloaded_file, install_dir=None):
         installation_directory = install_dir
     else:
         installation_directory = DEFAULT_INSTALL_LOCATION
-    install_options = "/InstallationType={it} /AddToPath={atp} /RegisterPython={rp} /S /D={install_dir}".format(
-                            it=install_type,
-                            atp=add_to_path,
-                            rp=register_python,
-                            install_dir=installation_directory
+    #install_options = "/InstallationType={it} /AddToPath={atp} /RegisterPython={rp} /S /D={install_dir}".format(
+    #                        it=install_type,
+    #                        atp=add_to_path,
+    #                        rp=register_python,
+    #                        install_dir=installation_directory
+    #)
+    call(
+            [downloaded_file,
+            "/InstallationType={}".format(install_type),
+            "/AddToPath={}".format(add_to_path),
+            "/RegisterPython={}".format(rp),
+            "/S",
+            "/D={}".format(installation_directory)
+            ]
     )
-    call([downloaded_file])
     return installation_directory
 
 DEFAULT_INSTALL_LOCATION = user_home_directory() + "AppData\\Local\\Continuum\\Anaconda"
