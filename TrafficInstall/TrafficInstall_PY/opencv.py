@@ -24,9 +24,7 @@ def check():
     """
 
     install_dir_exists = os.path.exists(DEFAULT_INSTALL_LOCATION)
-    anaconda_exists = find_executable("anaconda")
-    conda_exists = find_executable("conda")
-    if anaconda_exists and conda_exists:
+    if install_dir_exists:
         return True
     else:
         return False

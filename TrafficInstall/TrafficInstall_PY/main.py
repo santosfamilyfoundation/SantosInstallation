@@ -24,7 +24,7 @@ def main():
     opencv_version = "2.4.12"  # TODO: Connect to config or ini file.
     opencv_installed = opencv.check()  # TODO: Check installed OpenCV version number. 
     if opencv_installed:
-        print("Existing OpenCV installation detected. Please remove this and rerun installation.")
+        print("Existing OpenCV installation detected at {}. Please remove this and rerun installation.").format(opencv.DEFAULT_INSTALL_LOCATION)
         return
     else:
         dfile_opencv = opencv.download("2.4.12", temp_dir)
