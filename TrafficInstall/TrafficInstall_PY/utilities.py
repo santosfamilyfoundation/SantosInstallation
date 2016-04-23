@@ -31,7 +31,6 @@ def user_home_directory():
     the values read from the environment variables.
     
     Args:
-        None
     
     Returns:
         str: Home directory of the current Windows user
@@ -53,7 +52,6 @@ def is_64bit():
     Checks the bitness of the current interpreter.
     
         Args:
-            None
 
         Returns
             bool: True if 64-bit, else False.
@@ -68,10 +66,10 @@ def make_temp_dir(install_dir):
     support material during installation.
 
     Args:
-        path (str): Path to a file or folder
+        install_dir (str): Path to a folder. This should be the installation directory.
     
     Returns:
-        None
+        str: Path to created temporary directory
     """
     temp_dir = os.path.join(install_dir, ".install")
     ensure_dir_exists(temp_dir)

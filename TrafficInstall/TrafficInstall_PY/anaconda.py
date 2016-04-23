@@ -27,6 +27,21 @@ def check():
     else:
         return False
 
+def find_existing():
+    """
+    Finds and returns the path to a currently installed version of Anaconda Scientific Python Distribution.
+
+    Returns:
+        str: Absoulte path to existing, installed Anaconda directory. If no existing installation is found,
+        this returns None.
+
+    """
+    exe = find_executable("anaconda")
+    if exe:
+        return os.path.dirname(os.path.dirname(exe))
+    else:
+        return None
+
 def download(version, destination, bit64=True):
     """
     Downloads a copy of the specified Anaconda installer
