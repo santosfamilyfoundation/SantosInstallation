@@ -1,0 +1,28 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "dummy"
+
+  # Custom aws box to install to
+  config.vm.provider :aws do |aws, override|
+    # Configure keys based on AWS getting started and using AWS CLI.
+    aws.access_key_id = ""
+    aws.secret_access_key = ""
+    aws.session_token = ""
+    aws.keypair_name = ""
+
+    # Configure ami and region based on AWS preferences. Available amis found here:
+    # https://cloud-images.ubuntu.com/locator/ec2/
+    # Search for Ubuntu 14.04 in your region.
+    aws.ami = "ami-a93631be"
+    aws.region = "us-east-1"
+
+    override.ssh.username = "ubuntu"
+    # Configure where your private key for AWS use is stored.
+    override.ssh.private_key_path = "~/.ssh/id_rsa"
+  end
+
+  # Custom shell scripts to install Santos Platform
+  config.vm.provision :shell, path: "user.sh", privileged: false
+  
+  # source: should point to auth.py location on local machine.
+  config.vm.provision "file", source: "auth.py", destination: "~/SantosCloud/app/auth.py"
+end
