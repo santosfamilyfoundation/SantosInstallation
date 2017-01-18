@@ -34,7 +34,7 @@ secret_access_key
 session_token
 key pair name
 ```
-In the directory where SantosInstallation was cloned, copy the keys to the Vagrant file in the respective named variables. 
+In the directory where SantosInstallation was cloned, copy the keys to the Vagrant file in the respective named variables. To get a session_token, run `aws sts get-session-token --duration-seconds 129600` using the AWS CLI.
 
 Next, install a blank box and the AWS plugin by typing:
 
