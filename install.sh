@@ -33,6 +33,9 @@ make doc
 sudo make install
 echo 'export PYTHONPATH="${PYTHONPATH}:/home/vagrant/Traffic/trafficintelligence/python"' | tee -a ~/.bashrc
 echo 'export PYTHONPATH="${PYTHONPATH}:/home/vagrant/SantosCloud"' | tee -a ~/.bashrc
+echo 'export TRAFFICCLOUD_SECRET_KEY="DefaultSecretKey"' | tee -a ~/.bashrc
+echo 'export TRAFFICCLOUD_EMAIL=""' | tee -a ~/.bashrc
+echo 'export TRAFFICCLOUD_EMAIL_PASSWORD=""' | tee -a ~/.bashrc
 . ~/.bashrc
 sudo ln /dev/null /dev/raw1394
 cd

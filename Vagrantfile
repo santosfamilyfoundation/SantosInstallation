@@ -22,7 +22,7 @@ end
 # you're doing.
 Vagrant.configure("2") do |config|
   config.vm.hostname = "vagrant"
-  config.vm.define "default-#{provider}"
+  config.vm.define "SantosCloud-#{provider}"
 
   config.vm.provider "virtualbox" do |vbox, override|
     override.vm.box = "ubuntu/trusty64"
