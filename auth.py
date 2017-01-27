@@ -1,3 +1,0 @@
-secret = ''
-email = ''
-password = ''
