@@ -12,6 +12,8 @@ SantosPlatform was developed and tested on Ubuntu 14.04 LTS.  The current list o
 4. Decide if your SantosPlatform will operate on a local machine, or on remote servers.
 
 ### 4a: Local installation (for testing and development)
+First, download the Santos Vagrant box from [this link](https://goo.gl/6hl76J). Add it to your vagrant boxes with the command `vagrant box add santosbox santos.box`.
+
 In the directory where SantosInstallation was cloned, run `vagrant up` to begin the install process. This step takes about 10 minutes to complete.
 Verify installation with `vagrant ssh` and opening a python shell. Here, try `import storage`.
 
