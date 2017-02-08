@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+sudo apt-get install python-numpy python-opencv -y
 cd ~/Traffic/trajectorymanagementandanalysis
 hg pull
 cd trunk/src/TrajectoryManagementAndAnalysis/
@@ -15,4 +16,4 @@ sudo make install
 cd ~/SantosCloud
 git pull
 sudo pip install -r requirements.txt
-nohup python SantosCloud/app/app.py > log.txt
+cd

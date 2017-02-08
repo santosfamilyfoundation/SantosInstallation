@@ -14,13 +14,12 @@ SantosPlatform was developed and tested on Ubuntu 14.04 LTS.  The current list o
 ### 4a: Local installation (for testing and development)
 First, download the Santos Vagrant box from [this link](https://goo.gl/6hl76J). Add it to your vagrant boxes with the command `vagrant box add santosbox santos.box`.
 
-In the directory where SantosInstallation was cloned, run `vagrant up` to begin the install process. This step takes about 10 minutes to complete.
-Verify installation with `vagrant ssh` and opening a python shell. Here, try `import storage`.
+In the directory where SantosInstallation was cloned, run `vagrant up` to begin the install process. Verify installation with `vagrant ssh` and opening a python shell. Here, try `import storage`.
 
 ```
 $ python
 $ > import storage
-$ > 
+$ >
 ```
 If no errors appear in the console, it is setup correctly.
 
@@ -29,7 +28,7 @@ Begin by creating security rules and gathering auth details from [AWS: Getting s
 
 You will need to open ssh port 22 to your IP address.
 
-The auth details needed are: 
+The auth details needed are:
 ```
 access_key
 secret_access_key
@@ -39,7 +38,7 @@ ami
 region
 ssh private_key_path
 ```
-In the directory where SantosInstallation was cloned, copy the keys to the Vagrant file in the respective named variables. 
+In the directory where SantosInstallation was cloned, copy the keys to the Vagrant file in the respective named variables.
 
 Next, install a blank box and the AWS plugin by typing:
 
@@ -58,6 +57,6 @@ The Vagrant install will help you set up the processing backend of the traffic a
 Vagrant is supported for all major operating systems.
 
 ## Platforms
-An automated installer has been developed for the Windows operating system. More details are available in the [`windows` branch of this repository](https://github.com/santosfamilyfoundation/SantosInstallation/tree/windows). 
+An automated installer has been developed for the Windows operating system. More details are available in the [`windows` branch of this repository](https://github.com/santosfamilyfoundation/SantosInstallation/tree/windows).
 
-The executable Windows installer may be downloaded [here](https://github.com/santosfamilyfoundation/SantosInstallation/raw/windows/TrafficInstall/TrafficInstall_PY/dist/TrafficInstaller.exe). 
+The executable Windows installer may be downloaded [here](https://github.com/santosfamilyfoundation/SantosInstallation/raw/windows/TrafficInstall/TrafficInstall_PY/dist/TrafficInstaller.exe).
