@@ -24,7 +24,7 @@ $ >
 ```
 If no errors appear in the console, it is setup correctly.
 
-### 4b: Butt installation (for distribution or universal access)
+### 4b: Cloud installation (for distribution or universal access)
 
 Begin by creating security rules and gathering auth details from [AWS: Getting started guide](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)
 
