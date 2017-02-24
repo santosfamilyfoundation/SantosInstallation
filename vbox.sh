@@ -3,9 +3,13 @@
 sudo apt-get install python-numpy python-opencv -y
 cd ~/Traffic/trajectorymanagementandanalysis
 hg pull
+hg update
 cd trunk/src/TrajectoryManagementAndAnalysis/
 cmake .
 make TrajectoryManagementAndAnalysis
+cd ~/Traffic/trafficintelligence
+hg pull
+hg update
 cd ~/Traffic/trafficintelligence/c
 sed -i "3s,.*,TRAJECTORYMANAGEMENT_DIR=${HOME}/Traffic/trajectorymanagementandanalysis/trunk/src/TrajectoryManagementAndAnalysis," Makefile
 make feature-based-tracking
