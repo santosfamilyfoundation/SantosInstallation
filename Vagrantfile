@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
     override.vm.box = "santosbox"
     override.vm.box_check_update = false
     override.vm.network "forwarded_port", guest: 8888, host: 8088
-    vbox.memory = "1024"
+    vbox.memory = "2048"
 
     # Custom shell script
     override.vm.provision :shell, path: "vbox.sh", privileged: false
