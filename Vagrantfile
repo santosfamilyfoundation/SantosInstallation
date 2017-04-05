@@ -23,6 +23,7 @@ end
 Vagrant.configure("2") do |config|
   config.vm.hostname = "vagrant"
   config.vm.define "default-#{provider}"
+  config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
 
   config.vm.provider "virtualbox" do |vbox, override|
     override.vm.box = "santos"
