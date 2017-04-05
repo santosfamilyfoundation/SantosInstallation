@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "default-#{provider}"
 
   config.vm.provider "virtualbox" do |vbox, override|
-    override.vm.box = "santosbox"
+    override.vm.box = "santos"
     override.vm.box_check_update = false
     override.vm.network "forwarded_port", guest: 8888, host: 8088
     vbox.memory = "4096"
