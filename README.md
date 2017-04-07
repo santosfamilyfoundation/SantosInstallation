@@ -1,19 +1,38 @@
 # SantosInstallation
-Installing traffic monitoring code on various platforms.
+
+SantosPlatform consists of two components: a server install named [SantosCloud](https://github.com/santosfamilyfoundation/SantosCloud) which provides an HTTP API that analyzed videos of intersections to produce traffic safety metrics, and a desktop application named [SantosGUI](https://github.com/santosfamilyfoundation/SantosGUI) that allows users to manage their projects and interfaces with SantosCloud to analyze the videos.
+
+This repository contains instructions for installing these components.
 
 ## Recommended Installation
-SantosPlatform was developed and tested on Ubuntu 14.04 LTS.  The current list of supported operating systems include
 
-* Ubuntu 14.04
+### SantosGUI
 
-#### 1. Install [SantosGUI](https://github.com/santosfamilyfoundation/SantosGUIs) onto your local machine.  Instructions for installing the front end is located in the [SantosGUI repository](https://github.com/santosfamilyfoundation/SantosGUI).
-#### 2. Download Vagrant from its [downloads page](https://www.vagrantup.com/downloads.html).
-#### 3. Clone this repo, [SantosInstallation](https://github.com/santosfamilyfoundation/SantosInstallation), which contains configuration files for Vagrant (Vagrantfile and install.sh).
-#### 4. Decide if your SantosPlatform will operate on a local machine, or on remote servers.
+Installation instructions for SantosGUI exist in the [README of the SantosGUI repository](https://github.com/santosfamilyfoundation/SantosGUI). Follow those instructions to install the user interface onto your computer.
 
-### 4a: Local installation (for testing and development)
+### SantosCloud
 
-First, download the Santos Vagrant box from [this link](https://goo.gl/6hl76J). Add it to your vagrant boxes with the command `vagrant box add santosbox santos.box`. You will also need a default provider to run VMs (such as virtualbox). To install, run `sudo apt-get install virtualbox` if on Ubuntu. Instructions for other OSes can be found online.
+The recommended installation for SantosCloud uses a Vagrant virtual machine. This has the advantage of dramatically reducing installation time, and provides a set environment for all developers that can be easily upgraded.
+
+Vagrant is a tool for building and managing virtual machine environments in a single workflow. This allows users on any operating system to easily create a virtual machine that already contains the environment necessary for running SantosCloud.
+
+To install the SantosCloud virtual machine, follow these instructions:
+
+#### 1. Download Vagrant from its [downloads page](https://www.vagrantup.com/downloads.html).
+#### 2. Clone this repo, [SantosInstallation](https://github.com/santosfamilyfoundation/SantosInstallation) onto your computer, which contains configuration files for Vagrant.
+#### 3. Install SantosCloud will operate on a local machine, or on remote servers.
+
+##### Local installation (for testing and development)
+
+###### Install Virtualbox
+
+To install Virtualbox on Ubuntu/Debian, run `sudo apt-get install virtualbox`. For all other OSes, download and install from [Virtualbox's website](https://www.virtualbox.org/wiki/Downloads).
+
+###### Download Vagrant Box
+
+First, download the Santos Vagrant box from [this link](https://goo.gl/6hl76J). Add it to your vagrant boxes with the command `vagrant box add santos santos.box`.
+
+###### Create Virtual Machine
 
 In the directory where SantosInstallation was cloned, run `vagrant up` to begin the install process. Verify installation with `vagrant ssh` and opening a python shell. Here, try `import storage`.
 
@@ -24,7 +43,7 @@ $ >
 ```
 If no errors appear in the console, it is setup correctly.
 
-### 4b: Cloud installation (for distribution or universal access)
+##### Cloud installation (for distribution or universal access)
 
 Begin by creating security rules and gathering auth details from [AWS: Getting started guide](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)
 
@@ -60,6 +79,21 @@ The Vagrant install will help you set up the processing backend of the traffic a
 Vagrant is supported for all major operating systems.
 
 ## Platforms
-An automated installer has been developed for the Windows operating system. More details are available in the [`windows` branch of this repository](https://github.com/santosfamilyfoundation/SantosInstallation/tree/windows).
 
-The executable Windows installer may be downloaded [here](https://github.com/santosfamilyfoundation/SantosInstallation/raw/windows/TrafficInstall/TrafficInstall_PY/dist/TrafficInstaller.exe).
+### SantosGUI
+
+You can find the list of supported OSes for SantosGUI in the [SantosGUI README](https://github.com/santosfamilyfoundation/SantosGUI).
+
+### SantosCloud
+
+SantosCloud was developed and tested on Ubuntu 14.04 LTS.  The current list of supported operating systems include:
+
+* Ubuntu 14.04
+
+However, the installation instructions above will work on any operating system, as it creates an Ubuntu virtual machine that contains the SantosCloud environment.
+
+#### Windows TrafficInstallation Install (Deprecated)
+
+At one point, the team developed an automated installer for Windows. This installer installs dependencies of the system. You *might* be able to use this installer to be able to run SantosCloud on Windows, but it is deprecated and will not be supported.
+
+The installer is available in the [`windows` branch of this repository](https://github.com/santosfamilyfoundation/SantosInstallation/tree/windows).

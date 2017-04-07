@@ -23,15 +23,18 @@ end
 Vagrant.configure("2") do |config|
   config.vm.hostname = "vagrant"
   config.vm.define "default-#{provider}"
+  config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
 
   config.vm.provider "virtualbox" do |vbox, override|
-    override.vm.box = "santosbox"
+    override.vm.box = "santos"
     override.vm.box_check_update = false
     override.vm.network "forwarded_port", guest: 8888, host: 8088
-    vbox.memory = "2048"
+    vbox.memory = "4096"
+    vbox.cpus = "2"
 
     # Custom shell script
     override.vm.provision :shell, path: "vbox.sh", privileged: false
+    config.vm.provision :shell, path: "onrun.sh", run: 'always'
   end
 
   config.vm.provider :aws do |aws, override|
@@ -48,6 +51,7 @@ Vagrant.configure("2") do |config|
 
     # Custom shell script
     override.vm.provision :shell, path: "aws.sh", privileged: false
+    
   end
 
 end

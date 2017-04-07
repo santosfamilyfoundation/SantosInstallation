@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-sudo apt-get install python-numpy python-opencv -y
 cd ~/Traffic/trajectorymanagementandanalysis
 hg pull
 hg update
