@@ -38,7 +38,8 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provider :aws do |aws, override|
-    override.vm.box = "dummy"
+    override.vm.box = "aws-dummy"
+    aws.block_device_mapping = [{ 'DeviceName' => '/dev/sda1', 'Ebs.VolumeSize' => 64 }]
     aws.access_key_id = ""
     aws.secret_access_key = ""
     aws.session_token = ""
@@ -46,7 +47,7 @@ Vagrant.configure("2") do |config|
 
     aws.ami = ""
     aws.region = ""
-    override.ssh.username = ""
+    override.ssh.username = "ubuntu"
     override.ssh.private_key_path = ""
 
     # Custom shell script
