@@ -28,6 +28,7 @@ Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox" do |vbox, override|
     override.vm.box = "santos"
     override.vm.box_check_update = false
+    override.vm.network "forwarded_port", guest: 8888, host: 8888
     vbox.memory = "4096"
     vbox.cpus = "2"
 
